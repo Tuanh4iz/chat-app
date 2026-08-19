@@ -715,7 +715,14 @@
         toggleExpand.querySelector('i').className = 'fas fa-chevron-down';
       }
     });
-    loadTrack(0);
+   loadTrack(0);
+
+// Thử phát nhạc, nếu bị chặn thì hiển thị hướng dẫn
+document.addEventListener('click', function playOnClick() {
+  audio.play().then(() => {
+    document.removeEventListener('click', playOnClick);
+  }).catch(() => {});
+});
 
     // ===== CHAT =====
     const savedName = localStorage.getItem('chat_username');
