@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Chat Ấm Áp</title>
+  <!-- Font Awesome & Google Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
+    /* ===== RESET ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Quicksand', sans-serif;
@@ -15,17 +17,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 8px;
+      padding: 16px;
     }
-
-    /* LOGIN */
+    /* ===== LOGIN ===== */
     .login-screen {
       background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 30px;
-      padding: 36px 24px;
-      max-width: 380px;
+      border-radius: 40px;
+      padding: 48px 36px;
+      max-width: 440px;
       width: 100%;
       text-align: center;
       color: #f8fafc;
@@ -33,68 +34,115 @@
       transition: all 0.4s ease;
     }
     .login-screen.hidden { display: none; }
-    .login-screen .logo { font-size: 40px; margin-bottom: 8px; background: linear-gradient(135deg, #f093fb, #f5576c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .login-screen h1 { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
-    .login-screen p { color: #a0aec0; margin-bottom: 20px; font-size: 14px; }
-    .login-screen label { display: block; text-align: left; font-weight: 500; font-size: 13px; color: #cbd5e1; margin-bottom: 4px; }
-    .login-screen input { width: 100%; padding: 12px 16px; border: 2px solid rgba(255,255,255,0.15); border-radius: 16px; background: rgba(255,255,255,0.05); color: #f8fafc; font-size: 15px; outline: none; transition: 0.3s; }
-    .login-screen input:focus { border-color: #f5576c; box-shadow: 0 0 0 4px rgba(245,87,108,0.3); }
-    .login-screen .btn { width: 100%; padding: 12px; margin-top: 14px; border: none; border-radius: 24px; background: linear-gradient(135deg, #f093fb, #f5576c); color: #fff; font-weight: 700; font-size: 17px; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 24px rgba(245,87,108,0.4); }
-    .login-screen .btn:hover { transform: scale(1.02); box-shadow: 0 12px 32px rgba(245,87,108,0.6); }
-    .login-screen .error { color: #f87171; font-size: 13px; margin-top: 8px; min-height: 20px; }
+    .login-screen .logo {
+      font-size: 48px;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #f093fb, #f5576c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .login-screen h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+    .login-screen p { color: #a0aec0; margin-bottom: 28px; font-size: 15px; }
+    .login-screen label {
+      display: block;
+      text-align: left;
+      font-weight: 500;
+      font-size: 14px;
+      color: #cbd5e1;
+      margin-bottom: 6px;
+    }
+    .login-screen input {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #f8fafc;
+      font-size: 16px;
+      outline: none;
+      transition: 0.3s;
+    }
+    .login-screen input:focus {
+      border-color: #f5576c;
+      box-shadow: 0 0 0 4px rgba(245, 87, 108, 0.3);
+    }
+    .login-screen .btn {
+      width: 100%;
+      padding: 14px;
+      margin-top: 18px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #f093fb, #f5576c);
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 8px 24px rgba(245, 87, 108, 0.4);
+    }
+    .login-screen .btn:hover { transform: scale(1.02); box-shadow: 0 12px 32px rgba(245, 87, 108, 0.6); }
+    .login-screen .error { color: #f87171; font-size: 14px; margin-top: 10px; min-height: 22px; }
 
-    /* CHAT CONTAINER */
+    /* ===== CHAT ===== */
     .chat-container {
       width: 100%;
       max-width: 820px;
       background: rgba(255, 255, 255, 0.06);
       backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 28px;
+      border-radius: 40px;
       overflow: hidden;
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
       display: flex;
       flex-direction: column;
-      height: 92vh;
-      max-height: 700px;
+      height: 90vh;
+      max-height: 750px;
       transition: all 0.3s ease;
     }
     .chat-container.hidden { display: none; }
 
-    /* HEADER */
+    /* ===== HEADER ===== */
     .chat-header {
-      padding: 12px 16px;
+      padding: 18px 28px;
       background: rgba(255, 255, 255, 0.05);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: nowrap;
-      gap: 6px;
-      flex-shrink: 0;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     .chat-header .left {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: nowrap;
-      overflow: hidden;
+      gap: 14px;
+      flex-wrap: wrap;
     }
-    .chat-header .left .room-icon { font-size: 22px; background: linear-gradient(135deg, #f093fb, #f5576c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .chat-header .left .room-name { font-weight: 700; font-size: 16px; color: #f8fafc; white-space: nowrap; }
+    .chat-header .left .room-icon {
+      font-size: 28px;
+      background: linear-gradient(135deg, #f093fb, #f5576c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .chat-header .left .room-name {
+      font-weight: 700;
+      font-size: 20px;
+      color: #f8fafc;
+      letter-spacing: -0.3px;
+    }
     .chat-header .user-info {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 12px;
+      gap: 12px;
+      font-size: 14px;
       color: #cbd5e1;
-      background: rgba(255,255,255,0.06);
-      padding: 2px 10px 2px 6px;
-      border-radius: 20px;
-      white-space: nowrap;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 4px 16px 4px 12px;
+      border-radius: 30px;
     }
     .chat-header .user-info .avatar {
-      width: 26px; height: 26px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: linear-gradient(135deg, #f093fb, #f5576c);
       display: flex;
@@ -102,197 +150,240 @@
       justify-content: center;
       color: #fff;
       font-weight: 700;
-      font-size: 12px;
+      font-size: 14px;
     }
-    .chat-header .user-info .name { font-weight: 600; color: #f8fafc; font-size: 13px; }
-    .chat-header .status { font-size: 10px; display: flex; align-items: center; gap: 4px; }
-    .chat-header .status .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
-    .dot.online { background: #4ade80; box-shadow: 0 0 8px #4ade80; }
+    .chat-header .user-info .name { font-weight: 600; color: #f8fafc; }
+    .chat-header .status {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .chat-header .status .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot.online { background: #4ade80; box-shadow: 0 0 12px #4ade80; }
     .dot.offline { background: #f87171; }
     .dot.connecting { background: #fbbf24; animation: pulse 1.2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(0.9);} }
-
-    .chat-header .right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.9); }
+    }
+    .chat-header .right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
     .tiktok-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 32px; height: 32px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       color: #fff;
-      font-size: 18px;
+      font-size: 22px;
       text-decoration: none;
       transition: 0.3s;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .tiktok-btn:hover { background: #000; transform: scale(1.05); box-shadow: 0 0 16px rgba(255,255,255,0.1); }
+    .tiktok-btn:hover {
+      background: #000;
+      transform: scale(1.1);
+      box-shadow: 0 0 24px rgba(255, 255, 255, 0.15);
+    }
 
-    /* MESSAGES */
+    /* ===== MESSAGES ===== */
     .chat-messages {
       flex: 1;
-      padding: 12px 14px;
+      padding: 20px 24px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 10px;
       background: rgba(0, 0, 0, 0.2);
-      min-height: 0;
     }
-    .chat-messages::-webkit-scrollbar { width: 3px; }
+    .chat-messages::-webkit-scrollbar { width: 4px; }
     .chat-messages::-webkit-scrollbar-track { background: transparent; }
-    .chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
 
     .message {
-      max-width: 80%;
-      padding: 8px 14px;
-      border-radius: 18px;
-      animation: slideUp 0.25s ease;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      max-width: 75%;
+      padding: 12px 18px;
+      border-radius: 22px;
+      animation: slideUp 0.3s ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
       position: relative;
     }
     .message.mine {
       align-self: flex-end;
       background: linear-gradient(135deg, #f093fb, #f5576c);
       color: #fff;
-      border-bottom-right-radius: 4px;
+      border-bottom-right-radius: 6px;
     }
     .message.other {
       align-self: flex-start;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(4px);
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       color: #e2e8f0;
-      border-bottom-left-radius: 4px;
+      border-bottom-left-radius: 6px;
     }
     .message.system {
       align-self: center;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
       color: #94a3b8;
       font-style: italic;
-      font-size: 12px;
-      padding: 4px 16px;
-      border-radius: 20px;
+      font-size: 13px;
+      padding: 6px 20px;
+      border-radius: 30px;
       backdrop-filter: blur(4px);
       max-width: 90%;
       box-shadow: none;
     }
     .message .username {
       font-weight: 600;
-      font-size: 12px;
+      font-size: 13px;
       color: #fbbf24;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
     .message.mine .username { color: #fde68a; }
-    .message .text { word-wrap: break-word; line-height: 1.4; font-size: 14px; }
+    .message .text {
+      word-wrap: break-word;
+      line-height: 1.5;
+    }
     .message .time {
-      font-size: 9px;
-      color: rgba(255,255,255,0.4);
-      margin-top: 4px;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 6px;
       text-align: right;
     }
-    .message.mine .time { color: rgba(255,255,255,0.5); }
+    .message.mine .time { color: rgba(255, 255, 255, 0.6); }
     .message img {
       max-width: 100%;
-      max-height: 150px;
-      border-radius: 12px;
-      margin-top: 6px;
+      max-height: 200px;
+      border-radius: 14px;
+      margin-top: 8px;
       display: block;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    @keyframes slideUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-    /* FOOTER */
+    /* ===== FOOTER ===== */
     .chat-footer {
-      padding: 8px 12px 10px;
+      padding: 14px 24px 18px;
       background: rgba(0, 0, 0, 0.3);
       border-top: 1px solid rgba(255, 255, 255, 0.06);
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      flex-shrink: 0;
+      gap: 10px;
     }
     .input-row {
       display: flex;
-      gap: 6px;
+      gap: 10px;
       align-items: center;
     }
     .input-row input[type="text"] {
       flex: 1;
-      padding: 10px 14px;
+      padding: 14px 20px;
       border: none;
-      border-radius: 30px;
-      background: rgba(255,255,255,0.08);
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(8px);
       color: #f8fafc;
-      font-size: 14px;
+      font-size: 15px;
       outline: none;
       transition: 0.3s;
-      border: 1px solid rgba(255,255,255,0.05);
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
-    .input-row input[type="text"]:focus { background: rgba(255,255,255,0.14); border-color: #f5576c; }
+    .input-row input[type="text"]:focus {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: #f5576c;
+    }
     .input-row input[type="text"]::placeholder { color: #94a3b8; }
     .input-row input[type="file"] { display: none; }
 
     .btn {
-      padding: 8px 18px;
+      padding: 12px 24px;
       border: none;
-      border-radius: 30px;
+      border-radius: 40px;
       background: linear-gradient(135deg, #f093fb, #f5576c);
       color: #fff;
       font-weight: 700;
       cursor: pointer;
       transition: 0.3s;
-      font-size: 13px;
+      font-size: 15px;
       white-space: nowrap;
-      box-shadow: 0 4px 16px rgba(245,87,108,0.3);
+      box-shadow: 0 6px 20px rgba(245, 87, 108, 0.3);
     }
-    .btn:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(245,87,108,0.5); }
+    .btn:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 28px rgba(245, 87, 108, 0.5);
+    }
     .btn-icon {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       border-radius: 50%;
-      width: 40px; height: 40px;
+      width: 52px;
+      height: 52px;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
       transition: 0.3s;
       color: #cbd5e1;
-      font-size: 18px;
-      border: 1px solid rgba(255,255,255,0.06);
+      font-size: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
-    .btn-icon:hover { background: rgba(255,255,255,0.16); color: #f8fafc; transform: scale(1.05); }
-
+    .btn-icon:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: #f8fafc;
+      transform: scale(1.05);
+    }
     .image-preview {
-      padding: 2px 0;
+      padding: 4px 0;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
     }
-    .image-preview img { max-height: 50px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); }
+    .image-preview img {
+      max-height: 60px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
     .image-preview .remove-img {
-      background: rgba(239,68,68,0.8);
+      background: rgba(239, 68, 68, 0.8);
       color: #fff;
       border: none;
       border-radius: 50%;
-      width: 24px; height: 24px;
-      font-size: 12px;
+      width: 28px;
+      height: 28px;
+      font-size: 14px;
       cursor: pointer;
       transition: 0.2s;
     }
-    .image-preview .remove-img:hover { background: #ef4444; transform: scale(1.1); }
+    .image-preview .remove-img:hover {
+      background: #ef4444;
+      transform: scale(1.1);
+    }
 
     .footer-note {
       text-align: center;
-      font-size: 10px;
-      color: rgba(255, 255, 255, 0.2);
-      padding-top: 2px;
-      border-top: 1px solid rgba(255,255,255,0.04);
-      margin-top: 2px;
-      letter-spacing: 0.2px;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.25);
+      padding-top: 4px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: 4px;
+      letter-spacing: 0.3px;
     }
     .footer-note span {
       background: linear-gradient(135deg, #f093fb, #f5576c);
@@ -301,32 +392,32 @@
       font-weight: 600;
     }
 
-    /* MUSIC PLAYER - TỐI ƯU */
+    /* ===== MUSIC PLAYER ===== */
     .music-player {
       position: fixed;
-      bottom: 12px;
-      right: 12px;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 50px;
-      padding: 6px 12px 6px 14px;
+      bottom: 24px;
+      right: 24px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 60px;
+      padding: 10px 18px 10px 22px;
       display: flex;
       align-items: center;
-      gap: 8px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+      gap: 14px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
       z-index: 999;
-      max-width: 260px;
+      max-width: 340px;
       transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       cursor: pointer;
       color: #f8fafc;
     }
     .music-player.collapsed {
       border-radius: 50%;
-      padding: 8px;
-      max-width: 44px;
+      padding: 12px;
+      max-width: 56px;
       gap: 0;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.8);
     }
     .music-player.collapsed .player-info,
     .music-player.collapsed .player-controls,
@@ -334,18 +425,19 @@
     .music-player .player-info {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       flex: 1;
       min-width: 0;
     }
     .music-player .player-info .cover {
-      width: 30px; height: 30px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: linear-gradient(135deg, #f093fb, #f5576c);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 18px;
       flex-shrink: 0;
       animation: spin 8s linear infinite paused;
     }
@@ -353,54 +445,53 @@
     @keyframes spin { to { transform: rotate(360deg); } }
     .music-player .player-info .song-title {
       font-weight: 600;
-      font-size: 12px;
+      font-size: 14px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 80px;
     }
     .music-player .player-info .song-artist {
-      font-size: 10px;
+      font-size: 11px;
       color: #94a3b8;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 80px;
     }
     .music-player .player-controls {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
     .music-player .player-controls button {
       background: none;
       border: none;
       color: #f8fafc;
-      font-size: 16px;
+      font-size: 20px;
       cursor: pointer;
       transition: 0.2s;
-      padding: 2px;
+      padding: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .music-player .player-controls button:hover { color: #f5576c; transform: scale(1.1); }
+    .music-player .player-controls button:hover { color: #f5576c; transform: scale(1.15); }
     .music-player .volume-control {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
     .music-player .volume-control input[type="range"] {
-      width: 40px;
-      height: 3px;
+      width: 60px;
+      height: 4px;
       -webkit-appearance: none;
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.2);
       border-radius: 4px;
       outline: none;
     }
     .music-player .volume-control input[type="range"]::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 10px; height: 10px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: #f5576c;
       cursor: pointer;
@@ -409,9 +500,9 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      height: 2px;
+      height: 3px;
       background: linear-gradient(90deg, #f093fb, #f5576c);
-      border-radius: 0 0 50px 50px;
+      border-radius: 0 0 60px 60px;
       transition: width 0.1s linear;
       width: 0%;
     }
@@ -419,16 +510,118 @@
       background: none;
       border: none;
       color: #94a3b8;
-      font-size: 12px;
+      font-size: 14px;
       cursor: pointer;
-      padding: 0 2px;
+      padding: 0 4px;
     }
     .music-player .toggle-expand:hover { color: #f8fafc; }
 
-    /* RESPONSIVE - MOBILE TỐI ƯU KHÔNG LƯỚT */
+    /* ===== RESPONSIVE - THU NHỎ NHẸ TRÊN MOBILE ===== */
     @media (max-width: 640px) {
-      body { padding: 4px; }
-      .login-screen { padding: 24px 16px; border-radius: 24px; max-width: 340px; }
+      body { padding: 8px; }
+      .login-screen { padding: 32px 20px; border-radius: 28px; max-width: 380px; }
+      .login-screen .logo { font-size: 40px; }
+      .login-screen h1 { font-size: 24px; }
+      .login-screen p { font-size: 14px; margin-bottom: 20px; }
+      .login-screen input { padding: 12px 16px; font-size: 15px; }
+      .login-screen .btn { font-size: 16px; padding: 12px; }
+
+      .chat-container {
+        border-radius: 28px;
+        height: 90vh;
+        max-height: 650px;
+      }
+      .chat-header {
+        padding: 14px 18px;
+        gap: 8px;
+      }
+      .chat-header .left .room-icon { font-size: 24px; }
+      .chat-header .left .room-name { font-size: 18px; }
+      .chat-header .user-info {
+        font-size: 12px;
+        padding: 2px 12px 2px 8px;
+        gap: 8px;
+      }
+      .chat-header .user-info .avatar { width: 28px; height: 28px; font-size: 12px; }
+      .chat-header .user-info .name { font-size: 13px; }
+      .chat-header .status { font-size: 11px; }
+      .tiktok-btn { width: 36px; height: 36px; font-size: 18px; }
+
+      .chat-messages {
+        padding: 16px 18px;
+        gap: 8px;
+      }
+      .message {
+        max-width: 80%;
+        padding: 10px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+      }
+      .message .username { font-size: 12px; }
+      .message .text { font-size: 14px; }
+      .message .time { font-size: 9px; }
+      .message img { max-height: 160px; }
+
+      .chat-footer {
+        padding: 12px 18px 14px;
+        gap: 8px;
+      }
+      .input-row input[type="text"] {
+        padding: 12px 16px;
+        font-size: 14px;
+      }
+      .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+      .btn-icon {
+        width: 46px;
+        height: 46px;
+        font-size: 18px;
+      }
+      .image-preview img { max-height: 50px; }
+      .footer-note { font-size: 10px; }
+
+      /* Music player thu nhỏ nhẹ */
+      .music-player {
+        bottom: 18px;
+        right: 18px;
+        padding: 8px 14px 8px 18px;
+        gap: 10px;
+        max-width: 280px;
+      }
+      .music-player .player-info .cover {
+        width: 34px;
+        height: 34px;
+        font-size: 15px;
+      }
+      .music-player .player-info .song-title {
+        font-size: 13px;
+        max-width: 80px;
+      }
+      .music-player .player-info .song-artist {
+        font-size: 10px;
+        max-width: 80px;
+      }
+      .music-player .player-controls button {
+        font-size: 17px;
+        padding: 2px 4px;
+      }
+      .music-player .volume-control input[type="range"] {
+        width: 50px;
+      }
+      .music-player.collapsed {
+        max-width: 48px;
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .login-screen {
+        padding: 24px 16px;
+        border-radius: 24px;
+        max-width: 340px;
+      }
       .login-screen .logo { font-size: 32px; }
       .login-screen h1 { font-size: 20px; }
       .login-screen p { font-size: 13px; margin-bottom: 16px; }
@@ -436,34 +629,34 @@
       .login-screen .btn { font-size: 15px; padding: 10px; }
 
       .chat-container {
-        border-radius: 20px;
-        height: 95vh;
-        max-height: 680px;
+        border-radius: 24px;
+        height: 92vh;
+        max-height: 600px;
       }
       .chat-header {
-        padding: 8px 12px;
-        gap: 4px;
+        padding: 10px 14px;
+        gap: 6px;
       }
-      .chat-header .left .room-icon { font-size: 18px; }
-      .chat-header .left .room-name { font-size: 14px; }
+      .chat-header .left .room-icon { font-size: 20px; }
+      .chat-header .left .room-name { font-size: 16px; }
       .chat-header .user-info {
-        font-size: 10px;
-        padding: 2px 8px 2px 4px;
-        gap: 4px;
+        font-size: 11px;
+        padding: 2px 8px 2px 6px;
+        gap: 6px;
       }
-      .chat-header .user-info .avatar { width: 22px; height: 22px; font-size: 10px; }
-      .chat-header .user-info .name { font-size: 11px; }
-      .chat-header .status { font-size: 9px; }
-      .tiktok-btn { width: 28px; height: 28px; font-size: 15px; }
+      .chat-header .user-info .avatar { width: 24px; height: 24px; font-size: 10px; }
+      .chat-header .user-info .name { font-size: 12px; }
+      .chat-header .status { font-size: 10px; }
+      .tiktok-btn { width: 32px; height: 32px; font-size: 16px; }
 
       .chat-messages {
-        padding: 8px 10px;
-        gap: 4px;
+        padding: 12px 14px;
+        gap: 6px;
       }
       .message {
-        padding: 6px 12px;
         max-width: 85%;
-        border-radius: 14px;
+        padding: 8px 14px;
+        border-radius: 18px;
         font-size: 13px;
       }
       .message .username { font-size: 11px; }
@@ -472,86 +665,60 @@
       .message img { max-height: 120px; }
 
       .chat-footer {
-        padding: 6px 10px 8px;
-        gap: 4px;
+        padding: 10px 14px 12px;
+        gap: 6px;
       }
       .input-row input[type="text"] {
-        padding: 8px 12px;
+        padding: 10px 14px;
         font-size: 13px;
       }
       .btn {
-        padding: 6px 14px;
-        font-size: 12px;
-        border-radius: 24px;
+        padding: 8px 16px;
+        font-size: 13px;
       }
       .btn-icon {
-        width: 34px; height: 34px;
-        font-size: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
       }
       .image-preview img { max-height: 40px; }
-      .footer-note {
-        font-size: 8px;
-        padding-top: 1px;
-        margin-top: 1px;
-      }
+      .footer-note { font-size: 9px; }
 
-      /* MUSIC PLAYER TRÊN MOBILE - CỰC NHỎ */
       .music-player {
-        bottom: 8px;
-        right: 8px;
-        padding: 4px 10px 4px 12px;
-        gap: 6px;
-        max-width: 200px;
-        border-radius: 40px;
-        background: rgba(0, 0, 0, 0.85);
+        bottom: 14px;
+        right: 14px;
+        padding: 6px 12px 6px 14px;
+        gap: 8px;
+        max-width: 220px;
+        border-radius: 50px;
       }
       .music-player .player-info .cover {
-        width: 24px; height: 24px;
-        font-size: 11px;
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
       }
       .music-player .player-info .song-title {
-        font-size: 10px;
+        font-size: 11px;
         max-width: 60px;
       }
       .music-player .player-info .song-artist {
-        font-size: 8px;
+        font-size: 9px;
         max-width: 60px;
       }
       .music-player .player-controls button {
-        font-size: 13px;
-        padding: 1px;
+        font-size: 14px;
+        padding: 2px 3px;
       }
-      .music-player .volume-control {
-        display: none; /* Ẩn hẳn volume trên mobile cực nhỏ */
+      .music-player .volume-control input[type="range"] {
+        width: 40px;
       }
       .music-player .toggle-expand {
-        font-size: 10px;
-        padding: 0 1px;
-      }
-      .music-player .progress-bar {
-        height: 1.5px;
+        font-size: 12px;
+        padding: 0 2px;
       }
       .music-player.collapsed {
-        max-width: 36px;
-        padding: 6px;
-        right: 8px;
-        bottom: 8px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .chat-container {
-        height: 98vh;
-        max-height: 100vh;
-        border-radius: 16px;
-      }
-      .chat-messages {
-        padding: 6px 8px;
-      }
-      .message {
-        padding: 5px 10px;
-        font-size: 12px;
-        max-width: 90%;
+        max-width: 42px;
+        padding: 8px;
       }
     }
   </style>
@@ -576,7 +743,7 @@
   <div class="chat-header">
     <div class="left">
       <span class="room-icon"><i class="fas fa-comment-dots"></i></span>
-      <span class="room-name">Chat</span>
+      <span class="room-name">Phòng chat</span>
       <div class="user-info">
         <div class="avatar" id="userAvatar">?</div>
         <span class="name" id="displayName">User</span>
@@ -587,7 +754,7 @@
       </div>
     </div>
     <div class="right">
-      <a href="https://www.tiktok.com/@twuan.hai?lang=vi-VN" target="_blank" rel="noopener noreferrer" class="tiktok-btn" title="TikTok">
+      <a href="https://www.tiktok.com/@twuan.hai?lang=vi-VN" target="_blank" rel="noopener noreferrer" class="tiktok-btn" title="TikTok của tôi">
         <i class="fab fa-tiktok"></i>
       </a>
     </div>
@@ -628,7 +795,7 @@
     <button id="nextBtn" title="Bài tiếp"><i class="fas fa-step-forward"></i></button>
   </div>
   <div class="volume-control">
-    <i class="fas fa-volume-up" style="font-size:12px;color:#94a3b8;"></i>
+    <i class="fas fa-volume-up" style="font-size:14px;color:#94a3b8;"></i>
     <input type="range" id="volumeSlider" min="0" max="100" value="70" />
   </div>
   <button class="toggle-expand" id="toggleExpand"><i class="fas fa-chevron-down"></i></button>
@@ -636,7 +803,7 @@
 
 <script>
   (function() {
-    // DOM
+    // ===== DOM =====
     const loginScreen = document.getElementById('loginScreen');
     const chatContainer = document.getElementById('chatContainer');
     const loginForm = document.getElementById('loginForm');
@@ -664,14 +831,14 @@
     const songArtist = document.getElementById('songArtist');
     const toggleExpand = document.getElementById('toggleExpand');
 
-    // State
+    // ===== STATE =====
     let currentUser = '';
     let currentImageBase64 = null;
     let ws = null;
     let reconnectAttempts = 0;
     const MAX_RECONNECT = 10;
 
-    // Music
+    // ===== MUSIC =====
     let audio = new Audio();
     let isPlaying = false;
     let isCollapsed = false;
@@ -759,10 +926,12 @@
       audio.play().then(() => {
         isPlaying = true;
         updatePlayButton();
-      }).catch(() => {});
+      }).catch(() => {
+        console.log('Autoplay bị chặn');
+      });
     }
 
-    // Chat
+    // ===== CHAT =====
     const savedName = localStorage.getItem('chat_username');
     if (savedName) nameInput.value = savedName;
 
@@ -770,7 +939,7 @@
       e.preventDefault();
       const name = nameInput.value.trim();
       if (!name) {
-        loginError.textContent = 'Vui lòng nhập tên.';
+        loginError.textContent = 'Vui lòng nhập tên của bạn.';
         return;
       }
       loginError.textContent = '';
@@ -822,7 +991,9 @@
         }
       };
 
-      ws.onerror = (err) => { console.warn('WebSocket lỗi:', err); };
+      ws.onerror = (err) => {
+        console.warn('WebSocket lỗi:', err);
+      };
 
       ws.onmessage = (event) => {
         try {
@@ -872,7 +1043,7 @@
 
     function sendMessage() {
       if (!ws || ws.readyState !== WebSocket.OPEN) {
-        alert('Chưa kết nối được với server.');
+        alert('Chưa kết nối được với server. Vui lòng kiểm tra lại.');
         return;
       }
       const text = messageInput.value.trim();
