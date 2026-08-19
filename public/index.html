@@ -749,7 +749,7 @@
 
     function connect() {
       const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-      const host = window.location.hostname + ':' + (window.location.port || '3801');
+    const host = window.location.host;
       const url = protocol + '//' + host;
 
       try {
